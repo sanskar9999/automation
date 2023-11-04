@@ -1,0 +1,29 @@
+import pyautogui
+import time
+
+# Wait for 3 seconds before starting
+time.sleep(3)
+
+# Define the region to monitor (left, top, width, height)
+region = (100, 100, 200, 200)
+
+# Take a screenshot of the region and save it as 'region.png'
+pyautogui.screenshot('region.png', region=region)
+
+# Repeat 1000 times
+for i in range(1000):
+    # Wait for 1 second between each iteration
+    time.sleep(1)
+
+    # Try to find the region on the screen
+    location = pyautogui.locateOnScreen('region.png')
+
+    # If the region is found
+    if location is not None:
+        # Click on the center of the region
+        pyautogui.click(location)
+    else:
+        # If the region is not found
+        print('Region not found')
+        
+#This code monitors a 200x200 pixel area at the top left corner of the screen and clicks on it if it does not change. You can modify the region and the image file according to your needs
